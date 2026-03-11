@@ -1,0 +1,13 @@
+SELECT * FROM project_movie_database.movies;
+select * from directors;
+select count(*) as total_movies from movies;
+select * from directors where Name in ("James Cameron","Luc Besson","John Woo"); 
+select * from directors where Name like 's%';
+select count(*) as female_directors from directors where gender = 1;
+select Name from directors where gender = 1 order by Name limit 1 offset 9;
+select title, popularity from movies order by popularity desc limit 3;
+select title, revenue from movies order by revenue desc limit 3;
+select title, 'vote average' from movies where 'release date'>= '2000-01-01' order by 'vote average'desc limit 1;
+select m.title from movies m join directors d on m.director_id = d.id where d.name = 'Brenda Chapman';
+select d.name, count(*) as movie_count from directors d join movies m on d.id = m.director_id group by d.name order by movie_count desc limit 1;
+select d.name, sum(m.revenue) as total_revenue from directors d join movies m on d.id = m.director_id group by d.name order by total_revenue desc limit 1;
